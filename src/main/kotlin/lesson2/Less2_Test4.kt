@@ -1,5 +1,7 @@
 package org.example.lesson2
 
+const val TO_PERCENT = 100
+
 fun main() {
     val cristal = 7
     val iron = 11
@@ -8,7 +10,7 @@ fun main() {
     println("Bonus of iron is ${buffBonus(iron, buff).toInt()}")
 }
 fun buffBonus(element: Int, buff: Float): Float {
-    val bonus = element * (buff / 100)
+    val bonus = element * (buff / TO_PERCENT)
     return bonus
 }
 
