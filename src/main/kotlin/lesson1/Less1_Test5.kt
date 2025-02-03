@@ -1,11 +1,9 @@
 package org.example.lesson1
-
+const val PERIOD = 60
 fun main(){
     val secondsOfJourney: Short = 6480
-    val period = 60
-    val minutesOfJourney = secondsOfJourney / period
-    val hoursOfJourney = minutesOfJourney / period
-    println("${String.format("%02d", hoursOfJourney)}:${String.format("%02d", minutesOfJourney % 60)}:" +
-            String.format("%02d", secondsOfJourney % 60)
-    )
+    val hours = (secondsOfJourney / PERIOD) / PERIOD
+    val secondsTails = secondsOfJourney % PERIOD
+    val minuteTails = (secondsOfJourney / PERIOD) % PERIOD
+    println("%02d:%02d:%02d".format(hours, minuteTails, secondsTails))
 }
