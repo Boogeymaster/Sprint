@@ -5,11 +5,9 @@ fun main() {
     val workerSalary = 30000
     val internCount = 30
     val internSalary = 20000
-    var workerSalarySum = 0
-    var internSalarySum = 0
+    val workerSalarySum = workerCount * workerSalary
+    val internSalarySum = internCount * internSalary
     val employeesCount = workerCount + internCount
-    for(x in 1..workerCount) workerSalarySum += workerSalary
-    for(x in 1..internCount) internSalarySum += internSalary
     val generalSalary = workerSalarySum + internSalarySum
     val averageSalary = generalSalary / employeesCount
     println("Расходы на выплату зарплаты постоянных сотрудников: $workerSalarySum")
