@@ -1,5 +1,5 @@
 package org.example.lesson2
-
+const val PERIOD = 60
 fun main() {
     val startHour = 9
     val startMinute = 39
@@ -9,11 +9,11 @@ fun main() {
 }
 
 fun convertToMinute(hour: Int, minute: Int): Int {
-    val timeInMinute = hour * 60 + minute
+    val timeInMinute = hour * PERIOD + minute
     return timeInMinute
 }
 fun convertToHour(_minute: Int): Array<Int> {
-    val hour = _minute / 60
-    val minute = _minute - hour * 60
+    val hour = _minute / PERIOD
+    val minute = _minute - hour * PERIOD
     return arrayOf(hour, minute)
 }
