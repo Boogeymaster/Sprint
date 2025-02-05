@@ -4,11 +4,11 @@ fun main() {
 
     var from = "e2"
     var where = "e4"
-    var numberOfMove = 1
-    println("$from-$where; $numberOfMove")
+    var move = 1
+    println("$from-$where; $move")
     from = "d2"
     where = "d3"
-    numberOfMove++
-    println("$from-$where; $numberOfMove")
+    move++
+    println("$from-$where; $move")
 
 }
