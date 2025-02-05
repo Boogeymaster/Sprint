@@ -10,6 +10,6 @@ fun main() {
     val percent = 16.7
     val years = 20
     val result = sum * (1 + percent * ONE_PERCENT).pow(years)
-    println(floor(result * 1000)/1000)
+    println("%.3f".format(result))
 }
 
