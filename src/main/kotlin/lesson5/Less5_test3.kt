@@ -9,9 +9,11 @@ fun main() {
     val firstInputNumber = readln().toInt()
     println("Введите второе число:")
     val secondInputNumber = readln().toInt()
-    val result = if (firstInputNumber == FIRST_NUMBER && secondInputNumber == SECOND_NUMBER) {
+    val result = if (firstInputNumber == FIRST_NUMBER && secondInputNumber == SECOND_NUMBER
+        || firstInputNumber == SECOND_NUMBER && secondInputNumber == FIRST_NUMBER) {
         "Поздравляем! Вы выиграли главный приз!"
-    } else if (firstInputNumber == FIRST_NUMBER || secondInputNumber == SECOND_NUMBER) {
+    } else if (firstInputNumber == FIRST_NUMBER || secondInputNumber == SECOND_NUMBER
+        || firstInputNumber == SECOND_NUMBER || secondInputNumber == FIRST_NUMBER) {
         "Вы выиграли утешительный приз!"
     } else {
         "Неудача!"
