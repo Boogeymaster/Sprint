@@ -9,8 +9,8 @@ fun main() {
         val secondNumber = (1..9).random()
         println("Введите результат сложения чисел $firstNumber и $secondNumber")
         if (readln().toInt() == firstNumber + secondNumber) {
-            counter = 0
             isHuman = true
+            break
         } else {
             counter--
             println("Неверно")
