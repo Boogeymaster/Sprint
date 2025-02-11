@@ -14,14 +14,12 @@ fun main() {
     println("Введите рост в сантиметрах:")
     val height = readln().toFloat() / METRE_COEFFICIENT
     val bmi = weight / height.pow(2)
-    val result = if (bmi < DEFICIENSE_BODY_MASS){
-        "- ИМТ < $DEFICIENSE_BODY_MASS: Недостаточная масса тела"
-    } else if (DEFICIENSE_BODY_MASS <= bmi && bmi < NORMAL_BODY_MASS){
-        "- $DEFICIENSE_BODY_MASS ≤ ИМТ < $NORMAL_BODY_MASS: Нормальная масса тела"
-    } else if (NORMAL_BODY_MASS <= bmi && bmi < EXCESS_BODY_MASS) {
-        "- $NORMAL_BODY_MASS ≤ ИМТ < $EXCESS_BODY_MASS: Избыточная масса тела"
-    } else {
-        "- ИМТ ≥ $EXCESS_BODY_MASS: Ожирение"
+    val result = when {
+        bmi < DEFICIENSE_BODY_MASS -> "- ИМТ < $DEFICIENSE_BODY_MASS: Недостаточная масса тела"
+        bmi < NORMAL_BODY_MASS -> "- $DEFICIENSE_BODY_MASS ≤ ИМТ < $NORMAL_BODY_MASS: Нормальная масса тела"
+        bmi < EXCESS_BODY_MASS -> "- $NORMAL_BODY_MASS ≤ ИМТ < $EXCESS_BODY_MASS: Избыточная масса тела"
+        else -> "- ИМТ ≥ $EXCESS_BODY_MASS: Ожирение"
     }
     println("$result\nИндекс массы тела равен: ${"%.2f".format(bmi)}")
+
 }
