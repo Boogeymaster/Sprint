@@ -8,7 +8,7 @@ fun main() {
         val userNumber = readln().toInt()
         if (userNumber == luckyNumber) {
             println("Это была великолепная игра!")
-            counter = 0
+            return
         } else {
             println("Неверно, оставшееся количсетво попыток ${--counter}")
         }
