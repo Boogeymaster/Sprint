@@ -1,5 +1,8 @@
 package org.example.lesson7
 
+const val MIN_LENGTH_PASS = 6
+const val MANDATORY_RANDOM = 4
+
 fun main() {
 
     val simbolRange = arrayOf('0'..'9','a'..'z','A'..'Z')
@@ -12,21 +15,12 @@ fun main() {
     """.trimIndent()
         )
         userNumber = readln().toInt()
-    } while (userNumber < 6)
+    } while (userNumber < MIN_LENGTH_PASS)
     for (i in 1..userNumber){
-        pass += (simbolRange[(0..2).random()]).random()
+        if (i < MANDATORY_RANDOM) pass += (simbolRange[i-1]).random()
+        else pass += (simbolRange[(0..2).random()]).random()
     }
     println(pass)
 
 }
 
-
-//Задача 5* к Уроку 7
-//
-//Создай программу, которая генерирует более сложные пароли.
-//
-//– пароль должен содержать цифры, строчные и заглавные буквы -
-//должны присутствовать все три вида символов;
-//– цифры и буквы должны располагаться в случайном порядке;
-//– длина пароля должна задаваться пользователем;
-//– минимальная длина пароля 6 символов.
