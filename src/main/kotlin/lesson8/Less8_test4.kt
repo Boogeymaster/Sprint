@@ -8,7 +8,7 @@ fun main() {
     }
     println("Какой ингредиент желаете заменить?")
     val selectIngredient = readln()
-    if (ingredients.indexOf(selectIngredient) > 0) {
+    if (selectIngredient in ingredients) {
         println("Каким хотите заменить?")
         ingredients[ingredients.indexOf(selectIngredient)] = readln()
         println("Готово! Вы сохранили следующий список:")
