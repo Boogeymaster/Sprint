@@ -5,48 +5,44 @@ class User2(
     val login: String,
     var pass: String,
     val mail: String,
-    var bio: String?,
+    var bio: String? = null,
 ) {
-
-}
-
-fun main() {
-
-    val renat = User2(
-        1,
-        "Renat",
-        "1234546",
-        "re@nat.ru",
-        null,
-    )
-    printer(renat)
-    readerOfBio(renat)
-    passChanger(renat)
-    printer(renat)
-
-}
-
-fun printer(user: User2) {
-    println("""
+    fun printer(user: User2) {
+        println(
+            """
         Данные пользователя: 
         id = ${user.id}
         login = ${user.login}
         password = ${user.pass}
         mail = ${user.mail}
         bio = ${user.bio ?: "пусто"} 
-    """.trimIndent())
-}
+    """.trimIndent()
+        )
+    }
 
-fun readerOfBio(user: User2) {
-    println("Ввод биографии:")
-    user.bio = readln()
-}
+    fun readerOfBio(user: User2) {
+        println("Ввод биографии:")
+        user.bio = readln()
+    }
 
-fun passChanger(user: User2) {
-    println("Для смены пароля впишите текущий пароль: ")
-    if (user.pass == readln()) {
-        println("Впишите новый пароль:")
-        user.pass = readln()
-        println("Пароль успешно изменен.")
+    fun passChanger(user: User2) {
+        println("Для смены пароля впишите текущий пароль: ")
+        if (user.pass == readln()) {
+            println("Впишите новый пароль:")
+            user.pass = readln()
+            println("Пароль успешно изменен.")
+        }
     }
 }
+
+fun main() {
+
+    val rinat = User2(1, "rinat", "123456", "ri@nat.ru", null)
+    rinat.printer(rinat)
+    rinat.readerOfBio(rinat)
+    rinat.passChanger(rinat)
+    rinat.printer(rinat)
+
+}
+
+
