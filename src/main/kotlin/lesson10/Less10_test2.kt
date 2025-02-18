@@ -1,5 +1,6 @@
 package org.example.lesson10
 
+const val MIN_LENGTH = 4
 
 fun main() {
 
@@ -13,6 +14,6 @@ fun main() {
 
 fun compareLength(item: String): Boolean {
     var isLong = false
-    if (item.length >= 4) isLong = true
+    if (item.length >= MIN_LENGTH) isLong = true
     return isLong
 }
