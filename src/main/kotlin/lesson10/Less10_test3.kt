@@ -9,9 +9,9 @@ fun main() {
 }
 fun passGenerator(length: Int): String {
     var pass = ""
-    val passArray = arrayOf('0'..'9', ' '..'/')
+    val passArray = arrayOf(' '..'/', '0'..'9')
     for (i in 1 .. length) {
-        pass += passArray[(0..1).random()].random()
+        pass += passArray[i % 2].random()
     }
     return pass
 }
