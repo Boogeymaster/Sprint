@@ -37,10 +37,8 @@ fun main() {
         "Talkonauts",
         memberList = mutableListOf(user1, user2, user3),
     )
-//    roomPrinter(roommiesAndHomies)
     addMember(room1)
     memberStatusChange(room1)
-//    roomPrinter(roommiesAndHomies)
 }
 
 fun addMember(room: Room) {
@@ -61,21 +59,3 @@ fun memberStatusChange(room: Room) {
     println("Status is changed")
 }
 
-//fun roomPrinter(room: Room) {
-//    var members = ""
-//    room.memberList.forEach {
-//        members += "${it.avatar}   ${it.name}    ${it.status}\n"
-//    }
-//    println(
-//        """
-//        ${room.layer}
-//        ${room.name}
-//
-//        Members:
-//
-//        $members
-//
-//
-//    """.trimIndent()
-//    )
-//}
