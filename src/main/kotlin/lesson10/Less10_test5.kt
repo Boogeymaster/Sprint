@@ -13,8 +13,10 @@ fun main() {
 fun verification(log: String, pass: String): String? {
     return if (log == LOGIN && pass == PASS) {
         var token = ""
+        val numberRange = '0'..'9'
+        val litRange = 'A'..'Z'
         for (i in 1..32){
-            val randomParameters = arrayOf(('0'..'9').random(),('A'..'Z').random())
+            val randomParameters = arrayOf(numberRange.random(),litRange.random())
             token += randomParameters[(0..1).random()]
         }
         token
