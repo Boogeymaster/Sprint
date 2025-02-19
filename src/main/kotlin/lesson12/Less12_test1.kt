@@ -1,7 +1,7 @@
 package org.example.lesson12
 
 
-class Weather() {
+class Weather {
     var dayTemp = 25
     var nightTemp = 25
     var isRain = true
