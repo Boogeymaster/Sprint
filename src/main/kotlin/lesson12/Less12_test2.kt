@@ -1,14 +1,18 @@
 package org.example.lesson12
 
-class Weather2 ( val dayTemp: Int, val nightTemp: Int, val isRain: Boolean){
-    fun printWeather(){
-        println("""
+class Weather2(val dayTemp: Int, val nightTemp: Int, val isRain: Boolean) {
+
+    fun printWeather() {
+        println(
+            """
             Данные за день: 
             Температура днем: $dayTemp
             Температура ночью: $nightTemp
             Осадки: $isRain
-        """.trimIndent())
+        """.trimIndent()
+        )
     }
+
 }
 
 fun main() {
