@@ -5,16 +5,16 @@ class Room(
     val name: String,
     val memberList: MutableList<Member>,
 ){
-    fun addMember(room: Room) {
+    fun addMember() {
         println("Write name of new member:")
-        room.memberList.add(Member(name = readln()))
+        memberList.add(Member(name = readln()))
         println("Member successfully added")
     }
 
-    fun changeMemberStatus(room: Room) {
+    fun changeMemberStatus() {
         println("Input name to change status:")
         val name = readln()
-        room.memberList.forEach {
+        memberList.forEach {
             if (it.name.equals(name, true)) {
                 println("Input status:")
                 it.status = readln()
@@ -56,8 +56,8 @@ fun main() {
         "Talkonauts",
         memberList = mutableListOf(user1, user2, user3),
     )
-    room1.addMember(room1)
-    room1.changeMemberStatus(room1)
+    room1.addMember()
+    room1.changeMemberStatus()
 }
 
 
