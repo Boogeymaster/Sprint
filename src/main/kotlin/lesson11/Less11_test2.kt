@@ -7,7 +7,7 @@ class User2(
     val mail: String,
     var bio: String? = null,
 ) {
-    fun printer(user: User2) {
+    fun printUserData(user: User2) {
         println(
             """
         Данные пользователя: 
@@ -20,12 +20,12 @@ class User2(
         )
     }
 
-    fun readerOfBio(user: User2) {
+    fun addBio(user: User2) {
         println("Ввод биографии:")
         user.bio = readln()
     }
 
-    fun passChanger(user: User2) {
+    fun changePass(user: User2) {
         println("Для смены пароля впишите текущий пароль: ")
         if (user.pass == readln()) {
             println("Впишите новый пароль:")
@@ -38,10 +38,10 @@ class User2(
 fun main() {
 
     val rinat = User2(1, "rinat", "123456", "ri@nat.ru", null)
-    rinat.printer(rinat)
-    rinat.readerOfBio(rinat)
-    rinat.passChanger(rinat)
-    rinat.printer(rinat)
+    rinat.printUserData(rinat)
+    rinat.addBio(rinat)
+    rinat.changePass(rinat)
+    rinat.printUserData(rinat)
 
 }
 
