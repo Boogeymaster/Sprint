@@ -1,9 +1,10 @@
 package org.example.lesson12
 
+const val KALVIN_COEFFICIENT = 273
 
 class Weather3(dayTemp: Int, nightTemp: Int, private val isRain: Boolean) {
-    private val dayTemp = dayTemp - 273
-    private val nightTemp = nightTemp - 273
+    private val dayTemp = dayTemp - KALVIN_COEFFICIENT
+    private val nightTemp = nightTemp - KALVIN_COEFFICIENT
 
     fun printWeather() {
         println(
