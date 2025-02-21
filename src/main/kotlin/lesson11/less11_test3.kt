@@ -4,26 +4,7 @@ class Room(
     val layer: String,
     val name: String,
     val memberList: MutableList<Member>,
-){
-    fun addMember() {
-        println("Write name of new member:")
-        memberList.add(Member(name = readln()))
-        println("Member successfully added")
-    }
-
-    fun changeMemberStatus() {
-        println("Input name to change status:")
-        val name = readln()
-        memberList.forEach {
-            if (it.name.equals(name, true)) {
-                println("Input status:")
-                it.status = readln()
-            }
-        }
-        println("Status is changed")
-    }
-
-}
+)
 
 class Member(
     val avatar: String = ":)",
@@ -56,8 +37,45 @@ fun main() {
         "Talkonauts",
         memberList = mutableListOf(user1, user2, user3),
     )
-    room1.addMember()
-    room1.changeMemberStatus()
+//    roomPrinter(roommiesAndHomies)
+    addMember(room1)
+    memberStatusChange(room1)
+//    roomPrinter(roommiesAndHomies)
 }
 
+fun addMember(room: Room) {
+    println("Write name of new member:")
+    room.memberList.add(Member(name = readln()))
+    println("Member successfully added")
+}
 
+fun memberStatusChange(room: Room) {
+    println("Input name to change status:")
+    val name = readln()
+    room.memberList.forEach {
+        if (it.name.equals(name, true)) {
+            println("Input status:")
+            it.status = readln()
+        }
+    }
+    println("Status is changed")
+}
+
+//fun roomPrinter(room: Room) {
+//    var members = ""
+//    room.memberList.forEach {
+//        members += "${it.avatar}   ${it.name}    ${it.status}\n"
+//    }
+//    println(
+//        """
+//        ${room.layer}
+//        ${room.name}
+//
+//        Members:
+//
+//        $members
+//
+//
+//    """.trimIndent()
+//    )
+//}
