@@ -18,12 +18,16 @@ class Contact2(
 
 fun main() {
     val contactBook = mutableListOf(
-        Contact2("Sasha", 89997776655, null),
-        Contact2("Masha", 89997776655, null),
+        Contact2("Sasha", 89997776655),
+        Contact2("Masha", 89997776655),
         Contact2("Dasha", 89997776655, "null"),
-        Contact2("Pasha", 89997776655),
-        Contact2("Enokentiy", 89997776655)
+        Contact2("Pasha", 89997776655, "Apple"),
+        Contact2("Enokentiy", 89997776655, "Samsung")
     )
-    contactBook.forEach { it.printCompany() }
+    contactBook.forEach {
+        if (it.company != null && it.company != "null") {
+            it.printCompany()
+        }
+    }
 
 }
