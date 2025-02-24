@@ -18,6 +18,9 @@ class Contact4(
 }
 
 fun main() {
-    val number: Long? = readln().toLongOrNull()
-    println("NumberFormatException")
+    try {
+        val number: Long = readln().toLong()
+    } catch (e: Exception) {
+        println(e)
+    }
 }
