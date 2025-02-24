@@ -1,45 +1,82 @@
 package org.example.lesson14.Less14_test3
+
+import kotlin.math.roundToInt
+
 const val BLACK = "black"
 const val WHITE = "white"
+const val PI = 3.14
+const val PERIMETER_COEFFICIENT = 2
+
+abstract class Figure(val color: String) {
+    open fun area(): Int {
+        return TODO("Provide the return value")
+    }
+
+    open fun perimeter(): Int {
+        return TODO("Provide the return value")
+    }
+}
+
+class Round(color: String, val radius: Int) : Figure(color) {
+    override fun area(): Int {
+        val area = PI * (radius * radius)
+        return area.roundToInt()
+    }
+
+    override fun perimeter(): Int {
+        val perimeter = PERIMETER_COEFFICIENT * PI * radius
+        return perimeter.roundToInt()
+    }
+}
+
+class Square(color: String, val height: Int, val width: Int) : Figure(color) {
+    override fun area(): Int {
+        val area = height * width
+        return area
+    }
+
+    override fun perimeter(): Int {
+        val perimeter = PERIMETER_COEFFICIENT * (height + width)
+        return perimeter
+    }
+}
+
 fun main() {
 
     val roundList: List<Round> = listOf(
-        Round("white", 5),
-        Round("white", 6),
-        Round("black", 7),
-        Round("black", 4),)
-    val  squareList: List<Square> = listOf(
-        Square("white", 5, 10),
-        Square("white", 6, 10),
-        Square("black", 7, 10),
-        Square("black", 4, 10),
+        Round(WHITE, 5),
+        Round(WHITE, 6),
+        Round(BLACK, 7),
+        Round(BLACK, 4),
     )
-    val blackFigurePerimeterSum = 0
-    var blackRoundPerimeterSum = 0
-    roundList.forEach {
-        if (it.color.equals(BLACK)) blackRoundPerimeterSum += it.perimeter()
-    }
-
-
+    val squareList: List<Square> = listOf(
+        Square(WHITE, 5, 10),
+        Square(WHITE, 6, 10),
+        Square(BLACK, 7, 10),
+        Square(BLACK, 4, 10),
+    )
+    val sumPerimeterForBlack = getSumPerimeterForColor(roundList, BLACK) + getSumPerimeterForColor(squareList, BLACK)
+    val sumAreaForWhite = getSumAreaForColor(roundList, WHITE) + getSumAreaForColor(squareList, WHITE)
+    println(
+        """
+        - суммa периметров всех черных фигур: $sumPerimeterForBlack
+        - суммa площадей всех белых фигур: $sumAreaForWhite
+    """.trimIndent()
+    )
 }
 
-//Задача 3 к Уроку 14
-//
-//Напиши программу для работы с геометрическими фигурами: кругом и прямоугольником.
-//Каждая фигура имеет свой цвет и уникальные параметры:
-//
-//- для круга — радиус;
-//- для прямоугольника — ширину и высоту.
-//
-//Создай абстрактный класс Figure с полем color. Внутри определи два абстрактных метода:
-//
-//- для вычисления площади;
-//- для вычисления периметра.
-//
-//Добавь классы-наследники для вышеупомянутых типов фигур.
-//Реализуй методы для вычисления площади и периметра в каждом из классов-наследников (формулы можно найти в интернете).
-//
-//Создай несколько объектов разных цветов (черные и белые) и сохрани в единый список. Выведи в консоль:
-//
-//- сумму периметров всех черных фигур;
-//- сумму площадей всех белых фигур.
+fun getSumPerimeterForColor(figureList: List<Figure>, color: String): Int {
+    var sumPerimeter = 0
+    figureList.forEach {
+        if (it.color.equals(color)) sumPerimeter += it.perimeter()
+    }
+    return sumPerimeter
+}
+
+fun getSumAreaForColor(figureList: List<Figure>, color: String): Int {
+    var sumPerimeter = 0
+    figureList.forEach {
+        if (it.color.equals(color)) sumPerimeter += it.area()
+    }
+    return sumPerimeter
+}
