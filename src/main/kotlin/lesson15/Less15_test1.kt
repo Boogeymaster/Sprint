@@ -1,32 +1,36 @@
 package org.example.lesson15
 
-abstract class Creatures : Movable {
+abstract class Creatures {
     abstract val creaturesName: String
 }
 
-interface Movable {
-    fun move() {}
+interface Flying {
+    val creaturesName: String
+
+    fun fly() {
+        println("$creaturesName летает")
+    }
 }
 
-class Fish(override val creaturesName: String): Creatures(){
-    override fun move() {
+interface Swimming {
+    val creaturesName: String
+
+    fun swim() {
         println("$creaturesName плавает")
     }
 }
 
-class Waterfowl(override val creaturesName: String): Creatures(){
-    override fun move() {
-        println("$creaturesName плавает и летает")
-    }
-}
+class Fish(override val creaturesName: String) : Creatures(), Swimming
+
+class Waterfowl(override val creaturesName: String) : Creatures(), Swimming, Flying
 
 fun main() {
-
     val creature1 = Fish("Карась")
     val creature2 = Waterfowl("Чайка")
     val creature3 = Waterfowl("Утка")
-    creature1.move()
-    creature2.move()
-    creature3.move()
-
+    creature1.swim()
+    creature2.swim()
+    creature2.fly()
+    creature3.swim()
+    creature3.fly()
 }
