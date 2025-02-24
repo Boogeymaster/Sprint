@@ -6,8 +6,8 @@ const val KALVIN_COEFFICIENT = 273
 const val DAY_IN_MONTH = 30
 
 class Weather4(_dayTemp: Int, _nightTemp: Int, private val isRain: Boolean) {
-    private val dayTemp = _dayTemp - KALVIN_COEFFICIENT
-    private val nightTemp = _nightTemp - KALVIN_COEFFICIENT
+    private val dayTemp = _dayTemp - KALVIN_COEFFICIENT1
+    private val nightTemp = _nightTemp - KALVIN_COEFFICIENT1
 
     init {
         println(
