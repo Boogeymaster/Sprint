@@ -7,17 +7,13 @@ const val WHITE = "white"
 const val PI = 3.14
 const val PERIMETER_COEFFICIENT = 2
 
-abstract class Figure(val color: String) {
-    open fun area(): Int {
-        return TODO("Provide the return value")
-    }
-
-    open fun perimeter(): Int {
-        return TODO("Provide the return value")
-    }
+abstract class Figure {
+    abstract val color: String
+    abstract fun area(): Int
+    abstract fun perimeter(): Int
 }
 
-class Round(color: String, val radius: Int) : Figure(color) {
+class Round(val radius: Int, override val color: String) : Figure() {
     override fun area(): Int {
         val area = PI * (radius * radius)
         return area.roundToInt()
@@ -25,11 +21,11 @@ class Round(color: String, val radius: Int) : Figure(color) {
 
     override fun perimeter(): Int {
         val perimeter = PERIMETER_COEFFICIENT * PI * radius
-        return perimeter.roundToInt()
+        return perimeter.toInt()
     }
 }
 
-class Square(color: String, val height: Int, val width: Int) : Figure(color) {
+class Square(val height: Int, val width: Int, override val color: String) : Figure() {
     override fun area(): Int {
         val area = height * width
         return area
@@ -42,41 +38,38 @@ class Square(color: String, val height: Int, val width: Int) : Figure(color) {
 }
 
 fun main() {
-
-    val roundList: List<Round> = listOf(
-        Round(WHITE, 5),
-        Round(WHITE, 6),
-        Round(BLACK, 7),
-        Round(BLACK, 4),
+    val roundList = listOf(
+        Round(5, BLACK),
+        Round(5, BLACK),
+        Round(5, WHITE),
+        Round(5, WHITE),
     )
-    val squareList: List<Square> = listOf(
-        Square(WHITE, 5, 10),
-        Square(WHITE, 6, 10),
-        Square(BLACK, 7, 10),
-        Square(BLACK, 4, 10),
+    val squareList = listOf(
+        Square(5, 5, BLACK),
+        Square(5, 5, BLACK),
+        Square(5, 5, WHITE),
+        Square(5, 5, WHITE),
     )
-    val sumPerimeterForBlack = getSumPerimeterForColor(roundList, BLACK) + getSumPerimeterForColor(squareList, BLACK)
-    val sumAreaForWhite = getSumAreaForColor(roundList, WHITE) + getSumAreaForColor(squareList, WHITE)
+    var sumOfBlackPerimeter = 0
+    roundList.forEach {
+        if (it.color == BLACK) sumOfBlackPerimeter += it.perimeter()
+    }
+    squareList.forEach {
+        if (it.color == BLACK) sumOfBlackPerimeter += it.perimeter()
+    }
+    var sumOfWhiteArea = 0
+    roundList.forEach {
+        if (it.color == WHITE) sumOfWhiteArea += it.area()
+    }
+    squareList.forEach {
+        if (it.color == WHITE) sumOfWhiteArea += it.area()
+    }
     println(
         """
-        - суммa периметров всех черных фигур: $sumPerimeterForBlack
-        - суммa площадей всех белых фигур: $sumAreaForWhite
+        - суммa периметров всех черных фигур: $sumOfBlackPerimeter
+        - суммa площадей всех белых фигур: $sumOfWhiteArea
     """.trimIndent()
     )
 }
 
-fun getSumPerimeterForColor(figureList: List<Figure>, color: String): Int {
-    var sumPerimeter = 0
-    figureList.forEach {
-        if (it.color.equals(color)) sumPerimeter += it.perimeter()
-    }
-    return sumPerimeter
-}
 
-fun getSumAreaForColor(figureList: List<Figure>, color: String): Int {
-    var sumPerimeter = 0
-    figureList.forEach {
-        if (it.color.equals(color)) sumPerimeter += it.area()
-    }
-    return sumPerimeter
-}
