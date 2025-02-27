@@ -3,17 +3,18 @@ package org.example.lesson16
 class User() {
     val login = "login"
     private val pass = "12456"
-    var isVerified = false
 
-    fun verification() {
+
+    fun verification(): Boolean {
+        var isVerified = false
         if (pass == readln()) isVerified = true
+        return isVerified
     }
 }
 
 fun main() {
     val user = User()
-    user.verification()
-    if (user.isVerified) println("Verified")
+    if (user.verification()) println("Verified")
     else println("Don't verified")
 }
 
