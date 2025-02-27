@@ -23,15 +23,25 @@ class Player(
         println("You died.")
     }
 
+    fun criticalDamage(damage: Int){
+        if (!isDead) health -= damage
+        if (health <= 0) death()
+    }
+
+    fun ultimateHealing(heal: Int){
+        if (!isDead) health += heal
+    }
+
 }
 
 fun main() {
 
-    val player1 = Player("Bubba", 2, 1)
+    val player1 = Player("Bubba", 70, 1)
     player1.takeDamage()
     player1.healing()
-    player1.takeDamage()
-    player1.takeDamage()
+    player1.criticalDamage(65)
+    player1.ultimateHealing(30)
+    player1.criticalDamage(37)
 
 }
 
