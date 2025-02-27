@@ -23,12 +23,12 @@ class Player(
         println("You died.")
     }
 
-    fun criticalDamage(damage: Int){
+    fun criticalDamage(damage: Int) {
         if (!isDead) health -= damage
         if (health <= 0) death()
     }
 
-    fun ultimateHealing(heal: Int){
+    fun ultimateHealing(heal: Int) {
         if (!isDead) health += heal
     }
 
