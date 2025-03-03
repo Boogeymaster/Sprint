@@ -1,12 +1,12 @@
 package org.example.lesson17
 
 class Victorina(
-    question: String,
-    answer: String,
+    _question: String,
+    _answer: String,
 ) {
-    val question = "who?"
+    val question = _question
         get() = field
-    var answer = "you!"
+    var answer = _answer
         get() = field
         set(value) {
             field = value
