@@ -1,22 +1,23 @@
 package org.example.lesson_18
 
-open class Animal(name: String) {
+abstract class Animal {
     open fun eat() = ""
+    open fun slip() {}
 }
 
-class Fox(val name: String) : Animal(name) {
+class Fox(val name: String) : Animal() {
     override fun eat(): String {
         return "$name -> кушает ягоды"
     }
 }
 
-class Dog(val name: String) : Animal(name) {
+class Dog(val name: String) : Animal() {
     override fun eat(): String {
         return "$name -> кушает кости"
     }
 }
 
-class Cat(val name: String) : Animal(name) {
+class Cat(val name: String) : Animal() {
     override fun eat(): String {
         return "$name -> кушает рыбу"
     }
