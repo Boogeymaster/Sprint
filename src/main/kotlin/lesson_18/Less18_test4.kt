@@ -3,8 +3,8 @@ package org.example.lesson_18
 const val CUBE_EDGES = 6
 const val RECTANGLE_EDGES = 2
 
-abstract class Box {
-    abstract fun area(): Int
+open class Box {
+    open fun area(): Int = 0
 }
 
 class Cube(val edgeLength: Int) : Box() {
@@ -26,4 +26,15 @@ class Rectangle(
                 RECTANGLE_EDGES * height * length
         return area
     }
+}
+
+fun main() {
+
+    val box1: Box = Cube(6)
+    val box2: Box = Rectangle(5, 5, 5)
+    val boxes: List<Box> = listOf(box2, box1)
+    boxes.forEach {
+        println(it.area())
+    }
+
 }
