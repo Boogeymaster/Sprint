@@ -20,8 +20,7 @@ enum class Bullet {
     abstract fun getDamage(): Int
 }
 
-class Tank {
-    private var tankCartridge: Bullet? = null
+class Tank(private var tankCartridge: Bullet? = null) {
 
     fun reload(bullet: Bullet) {
         tankCartridge = bullet
@@ -30,7 +29,7 @@ class Tank {
 
     fun shoot() {
         if (tankCartridge != null) {
-            println("Tank applied ${tankCartridge!!.getDamage()} damage")
+            println("Tank applied ${tankCartridge?.getDamage()} damage")
         } else println("Tank cartridge is empty")
         tankCartridge = null
     }
