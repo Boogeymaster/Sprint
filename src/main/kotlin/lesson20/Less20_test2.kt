@@ -10,5 +10,7 @@ class Player(
 
 fun main() {
     val player = Player("BoogyWoogy123", 85);
-    { it: Player -> it.currentHealth = MAX_HEALTH }(player)
+    val healWithHealingPotion: (player: Player) -> Unit = {player.currentHealth = MAX_HEALTH}
+    healWithHealingPotion(player)
+
 }
