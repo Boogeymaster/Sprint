@@ -1,9 +1,9 @@
 package org.example.lesson21
 
 fun List<Int>.evenNumbersSum(): Int {
-    var sum = 0
-    this.forEach {
-        if (it % 2 == 0) sum += it
-    }
-    return sum
+    return this.isEvenFilter().sumOf { it }
+}
+
+fun List<Int>.isEvenFilter(): List<Int>{
+    return this.filter { it % 2 == 0 }
 }
