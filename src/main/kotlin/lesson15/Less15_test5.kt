@@ -1,63 +1,38 @@
 package org.example.lesson15
 
-abstract class Machine(val _passengerVolume: Int){
-    open var cargoVolume = 0
+open class Machine(val passengersVolume: Int) : MoveMachine, TransportPassengers, TransportCargo
 
-    constructor(_passengerVolume: Int, _cargoVolume: Int) : this(_passengerVolume) {
-        cargoVolume = _cargoVolume
-    }
+class Truck(passengersVolume: Int, val CargoVolume: Int) : Machine(passengersVolume)
+
+class Automobile(passengersVolume: Int) : Machine(passengersVolume)
+
+interface MoveMachine {
+    fun startMove() {}
+    fun finishMove() {}
 }
 
-interface Movable {
-    fun move()
-}
-
-interface Passengers {
-    fun loadPass(quantity: Int) {
-        println("$quantity Passengers loaded")
-    }
-
-    fun unloadPass(quantity: Int) {
-        println("$quantity Passengers unloaded")
-    }
-
-}
-
-interface Cargo {
-    fun loadCargo(quantity: Int) {
-        println("Cargo loaded")
-    }
-
-    fun unloadCargo(quantity: Int) {
-        println("Cargo unloaded")
-    }
-
-}
-
-class Automobile(_passengerVolume: Int) : Machine(_passengerVolume), Passengers {
-    var passengerVolume = _passengerVolume
-    override fun loadPass(quantity: Int) {
-        if (passengerVolume - quantity >= 0) {
-            passengerVolume -= quantity
-            super.loadPass(quantity)
+interface TransportPassengers {
+    fun loadPassengers(passengersVolume: Int, passengers: Int): Int {
+        var remains = 0
+        if (passengersVolume - passengers != -1) {
+            remains = passengersVolume - passengers
         }
+        return remains
     }
 
-    override fun unloadPass(quantity: Int) {
-        passengerVolume += quantity
-        super.unloadPass(quantity)
+    fun unloadPassengers(passengersVolume: Int, passengers: Int): Int {
+        val remains = passengersVolume + passengers
+        return remains
     }
 }
 
-class Truck(_passengerVolume: Int, _cargoVolume: Int) : Machine(_passengerVolume, _cargoVolume), Passengers, Cargo{
-    var passengerVolume = _passengerVolume
-    override var cargoVolume = _cargoVolume
+interface TransportCargo {
+    fun loadCargo(cargoVolume: Int, cargo: Int) {}
+    fun unloadCargo(cargoVolume: Int, cargo: Int) {}
 }
+
 
 fun main() {
-
-    val auto = Automobile(3)
-    val truck = Truck(1, 2000)
 
 
 }
