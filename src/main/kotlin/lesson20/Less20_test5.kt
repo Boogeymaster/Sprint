@@ -1,7 +1,6 @@
 package org.example.lesson20
 
-
-fun main() {
+class Robot {
     val phraseList = listOf(
         "Evil olive",
         "Do geese see God?",
@@ -9,19 +8,26 @@ fun main() {
         "Yo, banana boy!",
         "Madam, I’m Adam"
     )
+
+    fun say(words: String) {
+        println(words)
+    }
+
+    fun setModifier(
+        modifier: () -> String,
+    ): String {
+        val modifiedWords = modifier()
+        return modifiedWords
+    }
+}
+
+fun main() {
+
+    val robot = Robot()
     val inverter: (string: String) -> String = { it.reversed() }
-    say(phraseList.random())
-    val modifiedWords = setModifier { inverter(phraseList.random()) }
-    say(modifiedWords)
+    robot.say(robot.phraseList[2])
+    robot.say(robot.setModifier { inverter(robot.phraseList[2]) })
+
 }
 
-fun say(words: String) {
-    println(words)
-}
 
-fun setModifier(
-    modifier: () -> String,
-): String {
-    val modifiedWords = modifier()
-    return modifiedWords
-}
