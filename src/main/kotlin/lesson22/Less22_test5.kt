@@ -17,12 +17,11 @@ fun main() {
         LocalDate.of(2125, 6, 25),
         4.3f,
     )
-    val(title, description, date, distance) = stellarSystem
     println("""
-        $title
-        $description
-        $date
-        $distance
+        ${stellarSystem.component1()}
+        ${stellarSystem.component2()}
+        ${stellarSystem.component3()}
+        ${stellarSystem.component4()}
     """.trimIndent())
 
 }
