@@ -1,11 +1,11 @@
 package org.example.lesson22
 
-data class MainScreenState(
-    val data: String,
-    val isLoading: Boolean = false,
-)
 
 class MainScreenViewModel(var mainScreenState: MainScreenState) {
+    data class MainScreenState(
+        val data: String,
+        val isLoading: Boolean = false,
+    )
 
     fun loadData() {
         if (this.mainScreenState.isLoading) {
@@ -18,7 +18,7 @@ class MainScreenViewModel(var mainScreenState: MainScreenState) {
 
 fun main() {
 
-    val screenState = MainScreenState("any data")
+    val screenState = MainScreenViewModel.MainScreenState("any data")
     val screen1 = MainScreenViewModel(screenState)
     screen1.loadData()
     screen1.mainScreenState = screenState.copy(isLoading = true)
