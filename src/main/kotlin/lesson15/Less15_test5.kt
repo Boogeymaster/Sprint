@@ -1,53 +1,74 @@
 package org.example.lesson15
 
-open class Machine(val passengersVolume: Int) : MoveMachine, TransportPassengers, TransportCargo
+open class Machine(val passengersVolume: Int) : MoveMachine, TransportPassengers
 
-class Truck(passengersVolume: Int, val CargoVolume: Int) : Machine(passengersVolume)
+class Truck(passengersVolume: Int, private val cargoVolume: Int) : Machine(passengersVolume), TransportCargo {
+    override fun loadCargo(cargo: Int) {
+        if (cargoVolume - cargo >= 0) {
+            super.loadCargo(cargo)
+        }
+    }
 
-class Automobile(passengersVolume: Int) : Machine(passengersVolume)
+    override fun loadPassengers(passengers: Int) {
+        if (passengersVolume - passengers >= 0) {
+            super.loadPassengers(passengers)
+        }
+    }
+}
+
+class Automobile(passengersVolume: Int) : Machine(passengersVolume) {
+    override fun loadPassengers(passengers: Int) {
+        if (passengersVolume - passengers >= 0) {
+            super.loadPassengers(passengers)
+        }
+    }
+}
+
 
 interface MoveMachine {
-    fun startMove() {}
-    fun finishMove() {}
+    fun trip() {
+        print("Starting drive")
+        for (i in 0..2) {
+            Thread.sleep(500)
+            print(".")
+        }
+        println("Arrived!")
+    }
 }
 
 interface TransportPassengers {
-    fun loadPassengers(passengersVolume: Int, passengers: Int): Int {
-        var remains = 0
-        if (passengersVolume - passengers != -1) {
-            remains = passengersVolume - passengers
-        }
-        return remains
+    fun loadPassengers(passengers: Int) {
+        println("Loaded $passengers passenger")
     }
 
-    fun unloadPassengers(passengersVolume: Int, passengers: Int): Int {
-        val remains = passengersVolume + passengers
-        return remains
+    fun unloadPassengers(passengers: Int) {
+        println("Unload $passengers passengers")
     }
 }
 
 interface TransportCargo {
-    fun loadCargo(cargoVolume: Int, cargo: Int) {}
-    fun unloadCargo(cargoVolume: Int, cargo: Int) {}
-}
+    fun loadCargo(cargo: Int) {
+        println("Loaded $cargo ton cargo")
+    }
 
+
+    fun unloadCargo(cargo: Int) {
+        println("Unload $cargo ton cargo")
+    }
+}
 
 fun main() {
-
-
+    val auto1 = Truck(1, 2000)
+    val auto2 = Automobile(3)
+    auto1.loadPassengers(1)
+    auto1.loadCargo(2000)
+    auto1.trip()
+    auto1.unloadPassengers(1)
+    auto1.unloadCargo(2000)
+    auto2.loadPassengers(3)
+    auto2.trip()
+    auto2.unloadPassengers(3)
+    auto2.loadPassengers(2)
+    auto2.trip()
+    auto2.unloadPassengers(2)
 }
-
-//Задача 5* к Уроку 15
-//
-//В логике мобильной игры есть грузовые и легковые автомобили с такими параметрами:
-//
-//- грузовые машины могут перевозить одного пассажира и 2 тонны груза;
-//- легковые не перевозят груз, но могут вместить до 3 пассажиров.
-//
-//Создай интерфейсы, обеспечивающие передвижение машин, перевозку пассажиров и перевозку грузов.
-//
-//- учитывай максимальное и текущее количество перевозимых людей или грузов;
-//- интерфейсы должны содержать методы загрузки и разгрузки пассажиров или грузов.
-//
-//Спроектируй классы и несколько объектов.
-//Вызови их методы, «перевезя» таким образом 6 человек и 2 тонны груза.
