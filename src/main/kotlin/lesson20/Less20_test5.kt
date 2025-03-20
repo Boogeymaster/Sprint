@@ -8,16 +8,14 @@ class Robot {
         "Yo, banana boy!",
         "Madam, I’m Adam"
     )
+    var modifier: (String) -> String = { it }
 
     fun say(words: String) {
-        println(words)
+        println(modifier(words))
     }
 
-    fun setModifier(
-        modifier: () -> String,
-    ): String {
-        val modifiedWords = modifier()
-        return modifiedWords
+    fun updateModifier(update: (String) -> String) {
+        modifier = update
     }
 }
 
@@ -25,8 +23,9 @@ fun main() {
 
     val robot = Robot()
     val inverter: (string: String) -> String = { it.reversed() }
-    robot.say(robot.phraseList[2])
-    robot.say(robot.setModifier { inverter(robot.phraseList[2]) })
+    robot.say(robot.phraseList[4])
+    robot.updateModifier(inverter)
+    robot.say(robot.phraseList[4])
 
 }
 
